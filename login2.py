@@ -13,6 +13,7 @@ def chama_terceira_tela():
 
 def logout():
     terceira_tela.close()
+    quinta_tela.close()
     primeira_tela.show()
 
 
@@ -26,9 +27,9 @@ def chama_quarta_tela():
     quarta_tela.show()
 
 
-def volta_terceira_tela():
+def chama_quinta_tela():
     quarta_tela.close()
-    terceira_tela.show()
+    quinta_tela.show()
 
 
 def cadastrar():
@@ -60,7 +61,7 @@ def cadastrar():
             print("erro ao inserir banco de dados", erro)
 
     else:
-        print('Senhas incorretas')
+        print('Senha incorreta')
 
 
 app = QtWidgets.QApplication([])
@@ -68,6 +69,7 @@ primeira_tela = uic.loadUi("primeira_tela.ui")
 cadastro = uic.loadUi("cadastro.ui")
 terceira_tela = uic.loadUi("terceira_tela.ui")
 quarta_tela = uic.loadUi("quarta_tela.ui")
+quinta_tela = uic.loadUi('quinta_tela.ui')
 
 primeira_tela.pushButton.clicked.connect(chama_terceira_tela)
 primeira_tela.pushButton_2.clicked.connect(chama_cadastro)
@@ -80,8 +82,10 @@ terceira_tela.pushButton_2.clicked.connect(logout)
 terceira_tela.pushButton.clicked.connect(chama_quarta_tela)
 
 quarta_tela.pushButton.clicked.connect(logout)
-quarta_tela.pushButton_2.clicked.connect(volta_terceira_tela)
+quarta_tela.pushButton_2.clicked.connect(chama_quinta_tela)
 
+quinta_tela.pushButton_2.clicked.connect(logout)
+quinta_tela.pushButton.clicked.connect(chama_quarta_tela)
 
 primeira_tela.show()
 app.exec()
