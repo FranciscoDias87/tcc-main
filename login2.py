@@ -21,6 +21,16 @@ def chama_cadastro():
     cadastro.show()
 
 
+def chama_quarta_tela():
+    terceira_tela.close()
+    quarta_tela.show()
+
+
+def volta_terceira_tela():
+    quarta_tela.close()
+    terceira_tela.show()
+
+
 def cadastrar():
     cadastro.close()
     nome = cadastro.lineEdit.text()
@@ -57,6 +67,7 @@ app = QtWidgets.QApplication([])
 primeira_tela = uic.loadUi("primeira_tela.ui")
 cadastro = uic.loadUi("cadastro.ui")
 terceira_tela = uic.loadUi("terceira_tela.ui")
+quarta_tela = uic.loadUi("quarta_tela.ui")
 
 primeira_tela.pushButton.clicked.connect(chama_terceira_tela)
 primeira_tela.pushButton_2.clicked.connect(chama_cadastro)
@@ -66,6 +77,10 @@ cadastro.pushButton.clicked.connect(cadastrar)
 cadastro.pushButton.clicked.connect(chama_terceira_tela)
 
 terceira_tela.pushButton_2.clicked.connect(logout)
+terceira_tela.pushButton.clicked.connect(chama_quarta_tela)
+
+quarta_tela.pushButton.clicked.connect(logout)
+quarta_tela.pushButton_2.clicked.connect(volta_terceira_tela)
 
 
 primeira_tela.show()
